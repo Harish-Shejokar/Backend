@@ -1,10 +1,10 @@
 const fs = require("fs");   
 
-const requestHandler = (res, req) => {
+const requestHandler = (req, res) => {
   const url = req.url;
   const method = req.method;
-
-  // console.log(url);
+  
+  console.log("url +++++ "+url);
 
   if (url === "/") {
     fs.readFile("message.txt", { encoding: "utf-8" }, (err, data) => {
@@ -79,4 +79,12 @@ const requestHandler = (res, req) => {
   // console.log("hey");
 };
 
-module.exports = requestHandler;
+// module.exports = requestHandler;
+
+exports.handler = requestHandler;
+exports.someTExt = "some text";
+
+// module.exports = {
+//   handler: requestHandler,
+//   message : 'some text',
+// }
