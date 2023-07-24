@@ -1,6 +1,23 @@
 const http = require("http");
-const routes = require('./routes.js');
+const express = require("express");
 
-const server = http.createServer(routes.handler);
+const app = express();
 
-server.listen(4000);
+app.use((req, res, next) => {
+    console.log("first middleware");
+    next();
+});
+
+app.use((req, res, next) => {
+    console.log("second middleware");
+    // res.send('<h1> epxress frame work </h1>');
+    res.send({"key":"one"})
+});
+
+// const server = http.createServer(app);
+// server.listen(3000);
+app.listen(3000)
+
+
+
+
